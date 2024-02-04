@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1071865087405",
+    "project_id": "my-notes-app-akash-yt",
+    "storage_bucket": "my-notes-app-akash-yt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071865087405:android:ed14cee9e07f32e6fb8d24",
+        "android_client_info": {
+          "package_name": "com.example.notes_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeuHlHtHa76aba6sD26sib-EnzX1wpS_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
