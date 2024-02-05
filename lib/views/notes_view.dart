@@ -18,10 +18,12 @@ class NotesView extends StatelessWidget {
               switch (value) {
                 case MenuAction.logout:
                   await FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    loginViewRoute,
-                    (route) => false,
-                  );
+                  context.mounted
+                      ? Navigator.of(context).pushNamedAndRemoveUntil(
+                          loginViewRoute,
+                          (route) => false,
+                        )
+                      : null;
               }
             },
             itemBuilder: (context) {

@@ -1,5 +1,8 @@
+import 'dart:developer' as dev show log;
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'package:notes_app/constants/routes.dart';
 
 class LoginView extends StatefulWidget {
@@ -58,22 +61,30 @@ class _LoginViewState extends State<LoginView> {
                 );
               } on FirebaseAuthException catch (e) {
                 if (e.code == "invalid-email") {
-                  print("invalid email");
+                  dev.log("invalid email");
                 } else if (e.code == "user-not-found") {
-                  print("user not found");
+                  dev.log("user not found");
                 } else if (e.code == "wrong-password") {
-                  print("wrong password");
+                  dev.log("wrong password");
+                } else {
+                  dev.log(e.code);
                 }
+              } catch (e) {
+                dev.log(e.toString());
               }
               final user = FirebaseAuth.instance.currentUser;
               if (user != null) {
                 if (!user.emailVerified) {
-                  Navigator.of(context).pushNamed(verifyEmailViewRoute);
+                  context.mounted
+                      ? Navigator.of(context).pushNamed(verifyEmailViewRoute)
+                      : null;
                 } else {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    notesViewRoute,
-                    (route) => false,
-                  );
+                  context.mounted
+                      ? Navigator.of(context).pushNamedAndRemoveUntil(
+                          notesViewRoute,
+                          (route) => false,
+                        )
+                      : null;
                 }
               }
             },
